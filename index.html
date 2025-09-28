@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Patrick Matemba | Portfolio</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+<script>
+tailwind.config = {
+  darkMode: 'class',
+  theme: {
+    extend: {
+      colors: {
+        primary: '#0ea5e9',
+        secondary: '#1e293b',
+        accent: '#facc15',
+        bgLight: '#f8fafc',
+        textDark: '#334155',
+        card: '#ffffff',
+      },
+      fontFamily: {
+        inter: ['Inter', 'sans-serif']
+      }
+    }
+  }
+}
+</script>
+
+<style>
+body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+
+/* Custom cursor */
+.cursor {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #0ea5e9;
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  transition: transform 0.1s ease;
+  z-index: 9999;
+  mix-blend-mode: difference;
+}
+
+/* 3D tilt card effect */
+.tilt-card {
+  transform-style: preserve-3d;
+  transition: transform 0.3s ease;
+}
+
+/* Floating icons */
+.float-icon {
+  opacity: 0.6;
+  animation: floatAnim linear infinite;
+}
+
+@keyframes floatAnim {
+  0% { transform: translate(0,0) rotate(0deg); }
+  50% { transform: translate(var(--dx, 0), var(--dy, 0)) rotate(180deg); }
+  100% { transform: translate(0,0) rotate(360deg); }
+}
+</style>
+</head>
+
+<body class="bg-bgLight text-textDark dark:bg-gray-900 dark:text-gray-100 relative">
+
+<!-- Custom Cursor -->
+<div class="cursor"></div>
+
+<!-- Navbar -->
+<header class="fixed w-full bg-white dark:bg-gray-800 shadow z-50">
+  <div class="max-w-7xl mx-auto flex justify-between items-center p-4">
+    <a href="#" class="text-2xl font-bold text-primary">PatrickMatemba</a>
+    <nav class="flex items-center space-x-4">
+      <ul id="nav-links" class="hidden md:flex space-x-6 text-textDark dark:text-gray-100 font-semibold">
+        <li><a href="#about" class="nav-link hover:text-primary dark:hover:text-accent transition">About</a></li>
+        <li><a href="#services" class="nav-link hover:text-primary dark:hover:text-accent transition">Services</a></li>
+        <li><a href="#skills" class="nav-link hover:text-primary dark:hover:text-accent transition">Skills</a></li>
+        <li><a href="#projects" class="nav-link hover:text-primary dark:hover:text-accent transition">Projects</a></li>
+        <li><a href="#contact" class="nav-link hover:text-primary dark:hover:text-accent transition">Contact</a></li>
+      </ul>
+
+      <!-- Dark Mode Toggle -->
+      <button id="darkModeToggle" class="bg-gray-200 dark:bg-gray-700 p-2 rounded-full hover:bg-gray-300 dark:hover:bg-gray-600 transition">
+        <img src="https://cdn-icons-png.flaticon.com/512/869/869869.png" class="w-5 h-5" alt="Dark Mode">
+      </button>
+
+      <div id="hamburger" class="md:hidden cursor-pointer ml-2">
+        <div class="w-6 h-0.5 bg-textDark dark:bg-gray-100 my-1"></div>
+        <div class="w-6 h-0.5 bg-textDark dark:bg-gray-100 my-1"></div>
+        <div class="w-6 h-0.5 bg-textDark dark:bg-gray-100 my-1"></div>
+      </div>
+    </nav>
+  </div>
+  <ul id="mobile-menu" class="md:hidden hidden flex-col space-y-2 p-4 bg-white dark:bg-gray-800 text-textDark dark:text-gray-100 font-semibold shadow">
+    <li><a href="#about" class="nav-link hover:text-primary dark:hover:text-accent block">About</a></li>
+    <li><a href="#services" class="nav-link hover:text-primary dark:hover:text-accent block">Services</a></li>
+    <li><a href="#skills" class="nav-link hover:text-primary dark:hover:text-accent block">Skills</a></li>
+    <li><a href="#projects" class="nav-link hover:text-primary dark:hover:text-accent block">Projects</a></li>
+    <li><a href="#testimonials" class="nav-link hover:text-primary dark:hover:text-accent block">Testimonials</a></li>
+    <li><a href="#contact" class="nav-link hover:text-primary dark:hover:text-accent block">Contact</a></li>
+  </ul>
+</header>
+
+<!-- Hero Section -->
+<section class="min-h-screen flex flex-col md:flex-row items-center justify-center bg-gradient-to-r from-primary to-accent dark:from-gray-700 dark:to-gray-900 text-white pt-24 px-6 md:px-20 relative overflow-hidden">
+  <!-- Floating Icons -->
+  <div class="absolute inset-0 pointer-events-none overflow-hidden">
+    <img src="https://cdn-icons-png.flaticon.com/512/1055/1055687.png" class="absolute float-icon w-6 h-6" alt="Code Icon">
+    <img src="https://cdn-icons-png.flaticon.com/512/1041/1041887.png" class="absolute float-icon w-8 h-8" alt="Laptop Icon">
+    <img src="https://cdn-icons-png.flaticon.com/512/2907/2907252.png" class="absolute float-icon w-6 h-6" alt="Paint Brush Icon">
+    <img src="https://cdn-icons-png.flaticon.com/512/136/136524.png" class="absolute float-icon w-8 h-8" alt="Database Icon">
+    <img src="https://cdn-icons-png.flaticon.com/512/732/732212.png" class="absolute float-icon w-6 h-6" alt="HTML Icon">
+    <img src="https://cdn-icons-png.flaticon.com/512/732/732190.png" class="absolute float-icon w-6 h-6" alt="CSS Icon">
+  </div>
+
+  <div class="md:w-1/2 text-center md:text-left hero-text z-10">
+    <h1 class="text-5xl md:text-6xl font-bold mb-4 drop-shadow-lg">Hi, I'm Patrick Matemba</h1>
+    <p class="text-xl md:text-2xl mb-6 drop-shadow-md">Web Designer & Developer</p>
+    <a href="#projects" class="px-8 py-3 bg-white text-primary rounded-xl font-semibold shadow-lg hover:bg-gray-100 hover:scale-105 transform transition duration-300">See My Work</a>
+  </div>
+  <div class="md:w-1/2 mt-10 md:mt-0 flex justify-center hero-image z-10">
+    <img src="2.jpeg" alt="Patrick Matemba" class="w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 rounded-full object-cover border-4 border-white shadow-2xl hover:scale-105 transition transform duration-300">
+  </div>
+</section>
+
+<!-- About Section -->
+<section id="about" class="py-24 px-6 max-w-5xl mx-auto text-center md:text-left section bg-bgLight dark:bg-gray-900 text-textDark dark:text-gray-100">
+  <h2 class="text-3xl sm:text-4xl font-bold mb-6 text-secondary dark:text-gray-100">About Me</h2>
+  <p class="text-lg sm:text-xl leading-relaxed text-gray-700 dark:text-gray-300">I am a web designer and developer skilled in HTML, CSS, JavaScript, PHP, MySQL, and Tailwind CSS. I create responsive and visually appealing websites with clean code, focusing on performance and modern design. My goal is to deliver user-friendly, high-quality digital experiences.</p>
+</section>
+
+<!-- Services Section -->
+<section id="services" class="py-24 px-6 section">
+  <h2 class="text-3xl sm:text-4xl font-bold mb-12 text-center text-secondary dark:text-gray-100">My Services</h2>
+  <div class="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+    <div class="bg-card rounded-xl shadow-xl p-6 sm:p-8 text-center card-hover tilt-card dark:bg-gray-700 dark:text-gray-100">
+      <img src="https://cdn-icons-png.flaticon.com/512/2907/2907252.png" class="mx-auto w-12 h-12 sm:w-16 sm:h-16 mb-4" alt="Web Design Icon">
+      <h3 class="font-bold text-xl sm:text-2xl mb-2">Web Design</h3>
+      <p>Create beautiful, responsive websites with modern UI/UX principles and animations.</p>
+    </div>
+    <div class="bg-card rounded-xl shadow-xl p-6 sm:p-8 text-center card-hover tilt-card dark:bg-gray-700 dark:text-gray-100">
+      <img src="https://cdn-icons-png.flaticon.com/512/1055/1055687.png" class="mx-auto w-12 h-12 sm:w-16 sm:h-16 mb-4" alt="Web Development Icon">
+      <h3 class="font-bold text-xl sm:text-2xl mb-2">Web Development</h3>
+      <p>Build dynamic, interactive websites using HTML, CSS, JavaScript, PHP, and MySQL.</p>
+    </div>
+    <div class="bg-card rounded-xl shadow-xl p-6 sm:p-8 text-center card-hover tilt-card dark:bg-gray-700 dark:text-gray-100">
+      <img src="https://cdn-icons-png.flaticon.com/512/732/732190.png" class="mx-auto w-12 h-12 sm:w-16 sm:h-16 mb-4" alt="Tailwind CSS Icon">
+      <h3 class="font-bold text-xl sm:text-2xl mb-2">Tailwind CSS & UI</h3>
+      <p>Implement responsive, modern designs efficiently using Tailwind CSS and component libraries.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Skills Section -->
+<section id="skills" class="py-24 px-6 section bg-bgLight dark:bg-gray-900 text-textDark dark:text-gray-100">
+  <h2 class="text-3xl sm:text-4xl font-bold mb-12 text-center text-secondary dark:text-gray-100">Skills</h2>
+  <div class="max-w-4xl mx-auto space-y-6">
+    <div>
+      <h3 class="font-semibold mb-1">HTML</h3>
+      <div class="w-full bg-gray-300 dark:bg-gray-700 h-4 rounded">
+        <div class="bg-primary h-4 rounded skill-bar" data-width="95%"></div>
+      </div>
+    </div>
+    <div>
+      <h3 class="font-semibold mb-1">CSS</h3>
+      <div class="w-full bg-gray-300 dark:bg-gray-700 h-4 rounded">
+        <div class="bg-primary h-4 rounded skill-bar" data-width="90%"></div>
+      </div>
+    </div>
+    <div>
+      <h3 class="font-semibold mb-1">JavaScript</h3>
+      <div class="w-full bg-gray-300 dark:bg-gray-700 h-4 rounded">
+        <div class="bg-primary h-4 rounded skill-bar" data-width="85%"></div>
+      </div>
+    </div>
+    <div>
+      <h3 class="font-semibold mb-1">PHP & MySQL</h3>
+      <div class="w-full bg-gray-300 dark:bg-gray-700 h-4 rounded">
+        <div class="bg-primary h-4 rounded skill-bar" data-width="80%"></div>
+      </div>
+    </div>
+    <div>
+      <h3 class="font-semibold mb-1">Tailwind CSS</h3>
+      <div class="w-full bg-gray-300 dark:bg-gray-700 h-4 rounded">
+        <div class="bg-primary h-4 rounded skill-bar" data-width="90%"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Projects Section -->
+<section id="projects" class="py-24 px-6 section bg-bgLight dark:bg-gray-900 text-textDark dark:text-gray-100">
+  <h2 class="text-3xl sm:text-4xl font-bold mb-12 text-center text-secondary dark:text-gray-100">Projects</h2>
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 max-w-7xl mx-auto">
+    <div class="bg-card rounded-xl shadow-xl overflow-hidden card-hover tilt-card dark:bg-gray-700 dark:text-gray-100">
+      <img src="finance1.png" alt="Project 1" class="w-full h-56 sm:h-64 md:h-56 object-cover">
+      <div class="p-6">
+        <h3 class="font-bold text-xl sm:text-2xl mb-2">FINANCE TRACKER</h3>
+        <p>Finance Tracker with responsive design and smooth UI animations.</p>
+      </div>
+    </div>
+    <div class="bg-card rounded-xl shadow-xl overflow-hidden card-hover tilt-card dark:bg-gray-700 dark:text-gray-100">
+      <img src="music.png" alt="Project 2" class="w-full h-56 sm:h-64 md:h-56 object-cover">
+      <div class="p-6">
+        <h3 class="font-bold text-xl sm:text-2xl mb-2">Music Website Dashboard</h3>
+        <p>Music website Dashboard built using HTML, CSS, JS, PHP, MySQL, and Tailwind CSS with interactive effects.</p>
+      </div>
+    </div>
+    <div class="bg-card rounded-xl shadow-xl overflow-hidden card-hover tilt-card dark:bg-gray-700 dark:text-gray-100">
+      <img src="booking.png" alt="Project 3" class="w-full h-56 sm:h-64 md:h-56 object-cover">
+      <div class="p-6">
+        <h3 class="font-bold text-xl sm:text-2xl mb-2">PATIENT BOOKING APPOINTMENT SYSTEM</h3>
+        <p>Patient booking appointment system with PHP backend, MySQL database, and modern UI/UX.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+  </div>
+</section>
+
+<!-- Contact Section with Map -->
+<section id="contact" class="py-24 px-6 max-w-6xl mx-auto section bg-bgLight dark:bg-gray-900 text-textDark dark:text-gray-100">
+  <h2 class="text-3xl sm:text-4xl font-bold mb-8 text-center text-secondary dark:text-gray-100">Contact Me</h2>
+  
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+    <!-- Contact Form -->
+    <form action="php/contact.php" method="POST" class="bg-gray-50 dark:bg-gray-800 p-6 sm:p-8 rounded-xl shadow-xl space-y-6">
+      <input type="text" name="name" placeholder="Your Name" class="w-full p-4 border rounded-xl focus:ring-2 focus:ring-primary focus:outline-none bg-white dark:bg-gray-700 dark:text-gray-100">
+      <input type="email" name="email" placeholder="Your Email" class="w-full p-4 border rounded-xl focus:ring-2 focus:ring-primary focus:outline-none bg-white dark:bg-gray-700 dark:text-gray-100">
+      <textarea name="message" rows="5" placeholder="Your Message" class="w-full p-4 border rounded-xl focus:ring-2 focus:ring-primary focus:outline-none bg-white dark:bg-gray-700 dark:text-gray-100"></textarea>
+      <button type="submit" class="w-full bg-primary text-white py-4 rounded-xl font-semibold hover:bg-accent transition transform hover:-translate-y-1 hover:scale-105 duration-300">Send Message</button>
+    </form>
+
+    <!-- Map -->
+    <div class="rounded-xl overflow-hidden shadow-xl min-h-[400px]">
+      <iframe
+        class="w-full h-full"
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3977.1234567890!2d36.8219!3d-1.2921!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f10df0c1abcd1%3A0x123456789abcdef!2sNairobi!5e0!3m2!1sen!2ske!4v1695981234567!5m2!1sen!2ske"
+        style="border:0;"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-secondary dark:bg-gray-800 text-white py-8 mt-12">
+  <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center px-6">
+    <p>&copy; 2025 Patrick Matemba. All rights reserved.</p>
+    <div class="flex space-x-6 mt-4 md:mt-0">
+      <a href="https://www.linkedin.com/in/patrick-matemba-b98239167" class="hover:text-accent transition"><img src="https://cdn-icons-png.flaticon.com/512/145/145807.png" class="w-6 h-6" alt="LinkedIn"></a>
+      <a href="#" class="hover:text-accent transition"><img src="https://cdn-icons-png.flaticon.com/512/733/733553.png" class="w-6 h-6" alt="GitHub"></a>
+      <a href="#" class="hover:text-accent transition"><img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" class="w-6 h-6" alt="Twitter"></a>
+    </div>
+  </div>
+</footer>
+
+<!-- Scripts -->
+<script>
+  // Hamburger toggle
+  const hamburger = document.getElementById("hamburger");
+  const mobileMenu = document.getElementById("mobile-menu");
+  hamburger.addEventListener("click", () => mobileMenu.classList.toggle("hidden"));
+
+  // Smooth scroll
+  const navLinks = document.querySelectorAll(".nav-link");
+  navLinks.forEach(link => {
+    link.addEventListener("click", e => {
+      e.preventDefault();
+      document.querySelector(link.getAttribute("href")).scrollIntoView({ behavior: "smooth" });
+      if(window.innerWidth < 768) mobileMenu.classList.add("hidden");
+    });
+  });
+
+  // GSAP Animations
+  gsap.registerPlugin(ScrollTrigger);
+  gsap.from(".hero-text", { x:-100, opacity:0, duration:1, ease:"power2.out" });
+  gsap.from(".hero-image", { x:100, opacity:0, duration:1, ease:"power2.out", delay:0.3 });
+  gsap.utils.toArray(".section").forEach(section => {
+    gsap.from(section, {
+      scrollTrigger: { trigger: section, start: "top 80%" },
+      y: 50, opacity: 0, duration: 1, ease: "power2.out"
+    });
+  });
+  gsap.utils.toArray(".skill-bar").forEach(bar => {
+    gsap.from(bar, { scrollTrigger: { trigger: bar, start: "top 80%" }, width:0, duration:1.5, ease:"power2.out", onStart: () => { bar.style.width = bar.dataset.width; } });
+  });
+
+  // Custom cursor
+  const cursor = document.querySelector(".cursor");
+  document.addEventListener("mousemove", e => {
+    cursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
+  });
+
+  // Tilt cards
+  const cards = document.querySelectorAll(".tilt-card");
+  cards.forEach(card => {
+    card.addEventListener("mousemove", e => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+      const deltaX = (x - centerX) / centerX;
+      const deltaY = (y - centerY) / centerY;
+      card.style.transform = `rotateY(${deltaX*10}deg) rotateX(${-deltaY*10}deg) scale(1.05)`;
+    });
+    card.addEventListener("mouseleave", () => {
+      card.style.transform = "rotateY(0deg) rotateX(0deg) scale(1)";
+    });
+  });
+
+  // Floating icons
+  gsap.utils.toArray(".float-icon").forEach(icon => {
+    const dx = gsap.utils.random(-50,50);
+    const dy = gsap.utils.random(-50,50);
+    icon.style.setProperty('--dx', dx + 'px');
+    icon.style.setProperty('--dy', dy + 'px');
+    gsap.to(icon, { x:dx, y:dy, rotation:360, duration:gsap.utils.random(6,12), repeat:-1, yoyo:true, ease:"sine.inOut" });
+  });
+
+  // Hero floating image
+  gsap.to(".hero-image img", { y:-10, duration:2, repeat:-1, yoyo:true, ease:"sine.inOut" });
+
+  // Dark mode toggle
+  const darkModeToggle = document.getElementById('darkModeToggle');
+  const htmlEl = document.documentElement;
+  if(localStorage.getItem('darkMode') === 'true') htmlEl.classList.add('dark');
+  darkModeToggle.addEventListener('click', () => {
+    htmlEl.classList.toggle('dark');
+    localStorage.setItem('darkMode', htmlEl.classList.contains('dark'));
+  });
+</script>
+
+</body>
+</html>
